@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { assets } from "../../assets/assets";
 import { motion, AnimatePresence } from "motion/react";
 

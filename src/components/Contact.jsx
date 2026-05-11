@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import { useState } from "react";
 import { assets } from "../../assets/assets";
 import { motion } from "motion/react";
 
@@ -35,11 +35,15 @@ const Contact = ({ isDarkMode }) => {
         setResult("✅Form Submitted Successfully");
         event.target.reset();
       } else {
-        console.error("Form Error", data);
+        if (process.env.NODE_ENV === 'development') {
+          console.error("Form Error", data);
+        }
         setResult(data.message || "❌ Failed to submit form");
       }
     } catch (error) {
-      console.error("Error submitting form:", error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error("Error submitting form:", error);
+      }
       setResult("❌ Error sending message. Please try again.");
     } finally {
       setIsLoading(false);

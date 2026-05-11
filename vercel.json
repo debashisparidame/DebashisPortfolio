@@ -3,11 +3,6 @@
   "outputDirectory": ".next",
   "framework": "nextjs",
   "regions": ["iad1"],
-  "env": {
-    "NEXT_PUBLIC_APP_NAME": {
-      "description": "Application name"
-    }
-  },
   "headers": [
     {
       "source": "/:path*",
@@ -52,7 +47,5 @@
         }
       ]
     }
-  ],
-  "redirects": [],
-  "rewrites": []
+  ]
 }

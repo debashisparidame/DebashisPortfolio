@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { assets } from "../../assets/assets";
 import { motion } from "motion/react";
 

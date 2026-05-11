@@ -1,4 +1,3 @@
-import React from "react";
 import { assets, serviceData } from "../../assets/assets";
 import Image from "next/image";
 import { motion } from "motion/react";
