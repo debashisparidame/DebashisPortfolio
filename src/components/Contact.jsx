@@ -5,27 +5,44 @@ import { motion } from "motion/react";
 
 const Contact = ({ isDarkMode }) => {
   const [result, setResult] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     setResult("📤Sending....");
     const formData = new FormData(event.target);
 
-    formData.append("access_key", "48479b3f-ef76-4b59-983e-b84b50c16676");
+    // Use environment variable for API key
+    const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+    if (!apiKey) {
+      setResult("❌ Error: API key not configured");
+      setIsLoading(false);
+      return;
+    }
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData
-    });
+    formData.append("access_key", apiKey);
 
-    const data = await response.json();
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
 
-    if (data.success) {
-      setResult("✅Form Submitted Successfully");
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("✅Form Submitted Successfully");
+        event.target.reset();
+      } else {
+        console.error("Form Error", data);
+        setResult(data.message || "❌ Failed to submit form");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setResult("❌ Error sending message. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 

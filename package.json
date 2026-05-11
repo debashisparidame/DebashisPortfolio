@@ -1,14 +1,15 @@
 {
   "name": "DebashisPortfolio",
   "description": "A modern, responsive portfolio website built with Next.js and TailwindCSS.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --dir src",
+    "lint:fix": "next lint --dir src --fix"
   },
   "dependencies": {
     "motion": "^12.12.1",
@@ -17,13 +18,17 @@
     "react-dom": "^19.2.6"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
+    "@eslint/eslintrc": "^3.0.2",
     "@tailwindcss/postcss": "^4.3.0",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9",
+    "eslint": "^9.0.0",
     "eslint-config-next": "^16.2.6",
     "postcss": "^8.5.14",
     "tailwindcss": "^4.3.0"
+  },
+  "engines": {
+    "node": ">=18.18.0",
+    "npm": ">=9.0.0"
   },
   "overrides": {
     "postcss": "^8.5.14"
