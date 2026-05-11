@@ -8,7 +8,7 @@ const nextConfig = {
       },
     ],
   },
-  transpilePackages: ["motion"],
+  output: "standalone",
 };
 
 export default nextConfig;
